@@ -1,0 +1,46 @@
+@import "./vars.scss";
+
+$pad: 20px;
+
+.grid {
+	margin: 0 0 $pad 0;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+[class*='col-'] {
+	float: left;
+	padding-right: $pad;
+
+	.grid &:last-of-type {
+		padding-right: 0;
+	}
+
+	width: 100%; // For Mobile Phones
+}
+
+@media only screen and (min-width: $desktop-breakpoint) { // For Desktops
+	.col-1-5 {width: 20%;}
+	.col-2-5 {width: 40%;}
+	.col-3-5 {width: 60%;}
+	.col-4-5 {width: 80%;}
+	.col-5-5 {width: 100%;}
+
+	.col-1-2 {width: 50%;}
+
+	.col-1-3 {width: 33.33%;}
+	.col-2-3 {width: 66.66%;}
+}
+
+/* Opt-in outside padding */
+.grid-pad {
+	padding: $pad 0 $pad $pad;
+
+	[class*='col-']:last-of-type {
+		padding-right: $pad;
+	}
+}

@@ -1,0 +1,73 @@
+.cmptFormsForm {
+	hr {
+		border: 1px solid #e6e6e6;
+		margin-bottom: 1rem;
+	}
+
+	label {
+		font-size: .9rem;
+	}
+	input {
+		padding: .45rem;
+		margin-bottom: 0;
+	}
+	div.gap {
+		height: 1rem;
+	}
+
+	.errorField {
+		font-family: "Montserrat";
+		color: #fa2f00;
+		font-size: .85rem;
+		// padding: .3rem;
+		float: right;
+	}
+
+	.passwordField__strength {
+		font-family: "Montserrat";
+		color: #a5a5a5;
+	}
+
+	.cmptAutoSuggestInput_container {
+		position: relative;
+		z-index: 2;
+	}
+	.cmptAutoSuggestInput_list {
+		position: absolute;
+		top: -.25rem;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		border: 2px solid #e6e6e6;
+		border-radius: 2px;
+		background-color: #fff;
+
+		-webkit-box-shadow: 0 4px 24px #f0f0f0;
+		-moz-box-shadow: 0 4px 24px #f0f0f0;
+		box-shadow: 0 4px 24px #f0f0f0;
+	}
+	.cmptAutoSuggestInput_listItem {
+		padding: .85rem 1rem;
+		overflow: auto;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #f2f2f2;
+		}
+	}
+	.cmptAutoSuggestInput_listItemName {
+		float: left;
+		color: #737373;
+		font-family: "Montserrat";
+		pointer-events: none;
+	}
+	.cmptAutoSuggestInput_listItemExtra {
+		font-family: "Montserrat";
+		color: #a5a5a5;
+		float: right;
+		font-size: .85rem;
+		pointer-events: none;
+	}
+
+}

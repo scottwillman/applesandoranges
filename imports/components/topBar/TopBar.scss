@@ -1,0 +1,77 @@
+@import "{}/imports/stylesheets/vars.scss";
+@import "{}/imports/stylesheets/emboss.scss";
+
+.cmptTopBar {
+	width: 100%;
+	height: 48px;
+	background-color: #fcc83b;
+	// border-bottom: 1px solid #fab600;
+	color: white;
+	padding-top: .7rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	// overflow: hidden;
+
+	a {
+		line-height: 26px;
+		color: #ffffff;
+		text-decoration: none;
+		pointer-events: auto;
+		font-size: 1.1rem;
+		font-family: $font-forms;
+		// font-weight: bold;
+		// letter-spacing: 1px;
+
+		&:hover {
+			color: #ffffff;
+			text-decoration: none;
+			font-weight: bold;
+		}
+	}
+
+	.cmptTopBarCenter {
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		left: 0;
+		pointer-events: none;
+	}
+	.cmptTopBarLeft {
+		float: left;
+	}
+	.cmptTopBarRight {
+		float: right;
+
+	}
+
+	.dropdown {
+		position: relative;
+
+		.dropdownLink {
+			display: block;
+		}
+		.dropdownContent {
+			position: absolute;
+			min-width: 160px;
+			z-index: 1;
+			border: 1px solid #ccc;
+			padding: 1rem;
+			right: 0;
+			background-color: #f0f0f0;
+			@include box-shadow(0, 2px, 16px, rgba(153, 153, 153, .25));
+			border-radius: 3px;
+
+			color: #808080;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			a {
+				color: #808080;
+			}
+		}
+	}
+}

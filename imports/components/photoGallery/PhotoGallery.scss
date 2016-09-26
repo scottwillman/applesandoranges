@@ -1,0 +1,62 @@
+
+.cmptPhotoGallery {
+	padding: 1rem;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+
+	.cmptPhotoGalleryGrid {
+		width: 100%;
+		overflow: auto;
+
+	}
+
+	.cmptGalleryCard {
+		float: left;
+		width: 200px;
+		$imageHeight: 12rem;
+
+		border: 1px solid #FFFFFF;
+		padding: .25rem;
+		margin-bottom: 1rem;
+
+		&:hover {
+			border: 1px solid #DDD;
+		}
+
+		.cmptGalleryCardImage {
+			height: $imageHeight;
+			position: relative;
+			margin-top: .25rem;
+			margin-bottom: .25rem;
+
+			img {
+				max-height: $imageHeight;
+				max-width: $imageHeight;
+				width: auto;
+				height: auto;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+		}
+
+		.cmptGalleryCardName {
+			font-size: .75rem;
+			text-align: center;
+			height: 2.25rem;
+			margin-bottom: .25rem;
+		}
+
+		.cmptGalleryCardExtra {
+			border-top: 1px solid #f5f5f5;
+			font-size: .75rem;
+			text-align: right;
+			padding-top: .25rem;
+		}
+	}
+
+}

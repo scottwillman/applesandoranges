@@ -1,0 +1,52 @@
+@import "{}/imports/stylesheets/base-styles.scss";
+
+
+#chooseClassroom-layout {
+	width: 100%;
+	padding: 2px 10px;
+	@extend .auto-margins;
+
+	@include desktop {
+		max-width: 320px;
+		padding-top: 2rem;
+	}
+
+	.header {
+		text-align: center;
+		padding: 2rem 0;
+
+		h3 {
+			padding-top: 1rem;
+		}
+	}
+
+	fieldset {
+		margin-bottom: 1rem;
+	}
+
+	.btn {
+		margin-top: 1.25rem;
+		width: 100%;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.classroomChoiceList {
+		@include unstyled-list();
+		li {
+			@extend .btn;
+			border-radius: 0;
+			border-left: 3px solid $primary-a;
+			color: $dark-grey;
+			padding: 1rem;
+
+			.sub-text {
+				font-size: .88rem;
+				color: $grey;
+				padding-top: .25rem;
+			}
+		}
+	}
+}

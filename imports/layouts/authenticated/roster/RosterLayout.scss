@@ -1,0 +1,37 @@
+@import "{}/imports/stylesheets/base-styles.scss";
+@import "{}/imports/stylesheets/simpleGrid.scss";
+
+
+#rosterLayout {
+	width: 100%;
+	padding: 2px 4px;
+	@extend .auto-margins;
+
+	@include desktop {
+		max-width: $desktop-width;
+		padding: 1rem;
+	}
+
+	.listHeaderBar {
+		width: 100%;
+		background-color: $secondary-a;
+		padding: .3rem 1.5rem;
+
+		.float-left {
+			padding-top: .7rem;
+		}
+	}
+
+	ul.rosterList {
+		@include unstyled-list();
+		padding: .5rem 1.5rem;
+
+		.children {
+			color: $darkest-grey;
+		}
+
+		.adults {
+			color: $grey;
+		}
+	}
+}

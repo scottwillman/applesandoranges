@@ -1,0 +1,33 @@
+{
+  "name": "applesandoranges",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "compass-mixins": "^0.12.10",
+    "jquery": "^3.1.0",
+    "meteor-node-stubs": "~0.2.0",
+    "normalize.css": "^4.2.0",
+    "react": "^15.3.0",
+    "react-addons-pure-render-mixin": "^15.3.0",
+    "react-autosuggest": "^3.9.0",
+    "react-dom": "^15.2.1",
+    "react-images": "^0.4.6",
+    "react-komposer": "^1.13.1",
+    "react-mounter": "^1.2.0",
+    "react-router": "^2.5.2",
+    "react-ux-password-field": "^0.9.12",
+    "validator": "^5.4.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
+  }
+}

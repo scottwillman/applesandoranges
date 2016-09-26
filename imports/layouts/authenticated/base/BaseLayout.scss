@@ -1,0 +1,155 @@
+@import "{}/imports/stylesheets/base-styles.scss";
+
+
+#headerContainer {
+
+	#top-bar {
+		width: 100%;
+		padding: 2px 4px;
+		@extend .auto-margins;
+
+		@include desktop {
+			max-width: $desktop-width;
+			padding: .5rem .2rem;
+		}
+	}
+
+	#logo {
+		background: url("/images/aao_logo_orange_initials.png") no-repeat;
+		width: 58px;
+		height: 31px;
+
+		@include desktop {
+			background: url("/images/aao_logo_orange.png") no-repeat;
+			width: 180px;
+			height: 31px;
+		}
+	}
+
+	#user-menu {
+		font-family: $font-base;
+		font-size: .9rem;
+		color: $light-grey;
+		line-height: 2rem;
+		cursor: pointer;
+
+		position: relative;
+		// z-index: 1;
+		// overflow: visible;
+		display: inline-block;
+
+		.arrow-down {
+			margin-left: .4rem;
+			@include arrow-down(.5rem, $lightest-grey);
+		}
+	}
+
+	#user-menu-content {
+		position: absolute;
+		display: none;
+		right: 0;
+		min-width: 200px;
+		// height: 100px;
+		border: 1px solid $lightest-grey;
+		border-radius: 4px;
+		padding: .25rem .75rem;
+
+		// overflow: visible;
+		// position: relative;
+		// z-index: 2;
+		background-color: #fff;
+
+		@include box-shadow();
+
+		ul {
+			@include unstyled-list();
+		}
+	}
+
+}
+
+#navContainer {
+
+	background-color: $primary-a;
+
+	.classroomHeader {
+		width: 100%;
+		padding: 2px 4px;
+		@extend .auto-margins;
+
+		@include desktop {
+			max-width: $desktop-width;
+		}
+
+		text-align: center;
+		padding: 1rem;
+		color: #fff;
+	}
+
+	.classroomNavigation {
+		width: 100%;
+		padding: 2px 4px;
+		@extend .auto-margins;
+
+		@include desktop {
+			max-width: $desktop-width;
+			padding: 0;
+		}
+
+		text-align: center;
+
+		ul {
+			@include horizontal-list(0);
+
+			li {
+				background-color: $primary-a;
+				padding: .65rem 1rem;
+
+				&:hover {
+					background-color: $primary-a-secondary;
+				}
+
+
+				a {
+					font-weight: 700;
+					color: #fff;
+				}
+
+				&.active {
+					background-color: #fff;
+					color: $primary-a;
+
+					a {
+						color: $primary-a;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+#bodyContainer {
+	min-height: 100px;
+}
+
+#footer {
+	width: 100%;
+	border-top: 1px solid #f5f5f5;
+	padding: 1rem;
+	text-align: center;
+	color: #cacaca;
+	font-size: .7rem;
+
+	a {
+		color: #cacaca;
+		text-decoration: none;
+
+		&:hover {
+			color: #999;
+			text-decoration: none;
+		}
+	}
+
+
+}

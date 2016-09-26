@@ -1,0 +1,24 @@
+
+@mixin box-emboss($opacity1: 0.8, $opacity2: .05) {
+	box-shadow: rgba(255, 255, 255, $opacity) 0 1px 0, inset rgba(0, 0, 0, $opacity2) 0 1px 0;
+}
+
+@mixin text-emboss($opacity: 0.5) {
+	text-shadow: rgba(255, 255, 255, $opacity) 0px 1px 0px;
+}
+
+@mixin text-shadow($opacity: 0.25) {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, $opacity)
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow:inset $top $left $blur $color;
+		-moz-box-shadow:inset $top $left $blur $color;
+		box-shadow:inset $top $left $blur $color;
+	} @else {
+		-webkit-box-shadow: $top $left $blur $color;
+		-moz-box-shadow: $top $left $blur $color;
+		box-shadow: $top $left $blur $color;
+	}
+}

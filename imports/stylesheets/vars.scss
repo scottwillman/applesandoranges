@@ -1,0 +1,32 @@
+/* DIMENSIONS AND BREAKPOINTS */
+$desktop-breakpoint: 767px;  // iPad is 768px
+$desktop-width: 980px;
+
+@mixin desktop {
+	@media (min-width: #{$desktop-breakpoint}) {
+		@content;
+	}
+}
+
+
+/* FONTS */
+$font-base: "Roboto", "Century Gothic", "Trebuchet MS", "Helvetica", sans-serif;
+$font-headings: "Roboto", "Century Gothic", "Trebuchet MS", "Helvetica", sans-serif;
+// $font-forms: "Montserrat", "Century Gothic", "Trebuchet MS", "Helvetica", sans-serif;
+$font-forms: "Roboto", "Century Gothic", "Trebuchet MS", "Helvetica", sans-serif;
+$font-buttons: "Montserrat", "Century Gothic", "Trebuchet MS", "Helvetica", sans-serif;
+
+
+
+/* COLORS */
+$lightest-grey: rgba(0,0,0,0.1);
+$light-grey: rgba(0,0,0,0.3);
+$grey: rgba(0,0,0,0.5);
+$dark-grey: rgba(0,0,0,0.75);
+$darkest-grey: rgba(0,0,0,0.85);
+
+$red-error: rgb(200,0,0);
+
+$primary-a: rgb(254,195,39);
+$primary-a-secondary: rgb(255,218,115);
+$secondary-a: rgba(254,202,39,0.1);
