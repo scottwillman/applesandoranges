@@ -12,6 +12,7 @@ import BaseLayoutContainer from '/imports/layouts/authenticated/base/BaseLayout.
 import RosterLayoutContainer from '/imports/layouts/authenticated/roster/RosterLayout.jsx';
 
 import { FormHarness } from '/imports/layouts/harness/forms_base.jsx';
+import { EditableDataRow } from '/imports/layouts/harness/editableDataRow.jsx';
 
 // import { AppBaseLayout } from '/imports/layouts/appBase/AppBaseLayout.jsx';
 
@@ -28,6 +29,7 @@ Meteor.startup(() => {
 				<Route path="/classroom/:classroomId/roster" component={RosterLayoutContainer} />
 			</Route>
 			<Route path="harness/forms" component={FormHarness} />
+			<Route path="harness/editableDataRow" component={EditableDataRow} />
 		</Router>
 	), document.getElementById('app'));
 });

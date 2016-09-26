@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { BaseForm } from '/imports/lib/BaseForm.jsx';
 
-import { validate } from '/imports/lib/validate.js';
+// import { validate } from '/imports/lib/validate.js';
 import { Genders, Relationships } from '/imports/lib/choices.js';
 
 
