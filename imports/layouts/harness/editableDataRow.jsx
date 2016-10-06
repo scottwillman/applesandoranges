@@ -1,8 +1,12 @@
 import React from 'react';
+import FontAwesome from 'react-fontawesome';
 
 import { BaseForm } from '/imports/lib/BaseForm.jsx';
 
+
 import '/imports/stylesheets/base-styles.scss';
+
+
 
 export class EditableDataRow extends BaseForm {
 
@@ -14,9 +18,15 @@ export class EditableDataRow extends BaseForm {
 			'formMessage':'',
 			'inputs': {
 				'name': {
-					'origValue': '',
-					'value': '',
+					'origValue': this.props.name,
+					'value': this.props.name,
 					'validations': ['required'],
+					'error': '',
+				},
+				'email': {
+					'origValue': this.props.email,
+					'value': this.props.email,
+					'validations': ['required','email'],
 					'error': '',
 				},
 			},
@@ -40,15 +50,17 @@ export class EditableDataRow extends BaseForm {
 				curState[i].origValue = curState[i].value;
 			}
 		}
-		this.setState({'inputs': curState});
-		this.setState({'isEditing':false});
+		this.setState({
+			'inputs': curState,
+			'isEditing':false,
+		});
 	}
 
 	renderForm() {
 		return(
-			<form>
-				<label htmlFor="name">Name</label>
+			<form onSubmit={this.onSubmitHandler.bind(this)}>
 				<input type="text" name="name" value={this.state.inputs.name.value} onChange={this.onChangeHandler.bind(this)} autoComplete='off'/>
+				<input type="text" name="email" value={this.state.inputs.email.value} onChange={this.onChangeHandler.bind(this)} autoComplete='off'/>
 				<button onClick={this.onSubmitHandler.bind(this)} className="btn-small">Save</button>
 				<button onClick={this.cancelEdit.bind(this)} className="btn-small">Cancel</button>
 			</form>
@@ -58,8 +70,9 @@ export class EditableDataRow extends BaseForm {
 	renderText() {
 		return(
 			<div>
-				<button className="btn-small" onClick={this.makeEditable.bind(this)}>Edit</button>
+				<button className="btn-small" onClick={this.makeEditable.bind(this)}><FontAwesome name='pencil' /></button>
 				<span>{this.state.inputs.name.origValue}</span>
+				<span>{this.state.inputs.email.origValue}</span>
 			</div>
 		);
 	}
@@ -91,3 +104,15 @@ export class EditableDataRow extends BaseForm {
 		);
 	}
 }
+
+
+const EditableDataRowLayout = (props) => {
+	return (
+		<div>
+			<EditableDataRow name="stink" email="fart@sniffer.com" />
+			<EditableDataRow name="poo" email="poo@hole.com" />
+		</div>
+	)
+}
+
+export default EditableDataRowLayout;

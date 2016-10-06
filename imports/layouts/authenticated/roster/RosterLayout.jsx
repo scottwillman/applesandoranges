@@ -3,6 +3,9 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import { createContainer } from 'meteor/react-meteor-data';
+// import { EditableDataRow } from './containers/EditableDataRow.jsx';
+
+import { EditableElementTextInput } from './containers/EditableDataRow.jsx';
 
 import './RosterLayout.scss';
 
@@ -31,13 +34,19 @@ export class RosterLayout extends React.Component {
 									<li key={k}>
 										<div className="children">
 											{family.children.map((child, c) => {
-												return <div key={c}>{child.name}</div>
+
+												return <EditableElementTextInput key={c} name="name" value={child.name} />
 											})}
 										</div>
 										<div className="childrenForm" ref="childrenForm"></div>
 										<div className="adults">
 											{family.adults.map((adult, a) => {
-												return <div key={a}>{adult.profile.name} &nbsp;&nbsp;&nbsp;{adult.emails[0].address}</div>
+												return(
+													<form key={a}>
+														<EditableElementTextInput name="name" value={adult.profile.name} isEditing={false} />
+														<EditableElementTextInput name="email" value={adult.emails[0].address} isEditing={false} />
+													</form>
+												)
 											})}
 										</div>
 										<div className="adultsForm" ref="adultsForm"></div>
