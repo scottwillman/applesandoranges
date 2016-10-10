@@ -33,5 +33,18 @@
 		.adults {
 			color: $grey;
 		}
+
+		.btn-small {
+			display: inline-block;
+		}
+	}
+
+	form.rosterFormRow {
+		ul {
+			@include horizontal-list();
+			input {
+				padding: .3rem .5rem;
+			}
+		}
 	}
 }

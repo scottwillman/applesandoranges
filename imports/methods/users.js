@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { BaseMethods } from '/imports/lib/BaseMethods.js';
 
+import { logData } from '/imports/lib/logging.js';
 
 export class UserMethods extends BaseMethods {
 
@@ -61,6 +62,46 @@ export class UserMethods extends BaseMethods {
 		return result;
 	}
 
+	update(matchCriteria, data) {
+		let result = {
+			resp: '',
+			error: '',
+		};
+
+		// Sanitize And Flatten
+		let cleanData = null;
+		try {
+			cleanData = this._sanitize(data, this.schema);
+			flatData  = this._flattenObject(cleanData);
+
+			if (flatData.hasOwnProperty('email')) {
+				flatData['emails.0.address'] = flatData.email;
+				delete flatData['email'];
+			}
+
+		} catch(err) {
+			result.error = err.reason;
+			return result;
+		}
+
+		// logData("Original Data", data);
+		// logData("Clean Data", cleanData);
+		// logData("Flat Data", flatData);
+
+		// Perform DB actions
+		try {
+			result.resp = this._collection.update(matchCriteria, {'$set': flatData});
+			this.__logUserActivity({
+				'id': user_id,
+				'action': "User updated: "+JSON.stringify(flatData),
+			});
+		} catch(err) {
+			result.error = err.reason;
+			return result;
+		}
+		return result;
+	}
+
 	updateProfile(user_id, data) {
 		let result = {
 			resp: '',
@@ -83,7 +124,7 @@ export class UserMethods extends BaseMethods {
 			result.resp = this._collection.update(user_id, {'$set': flatData});
 			this.__logUserActivity({
 				'id': user_id,
-				'action': "Profile udpated for user: "+user_id,
+				'action': "Profile updated for user: "+user_id,
 			});
 		} catch(err) {
 			result.error = err.reason;

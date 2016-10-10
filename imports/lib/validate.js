@@ -43,7 +43,12 @@ const InputSanitizers = {
 		return validator.trim(value);
 	},
 	email: function(value) {
-		return validator.normalizeEmail(value);
+		const result = validator.normalizeEmail(value);
+		if (result) {
+			return result;
+		} else {
+			throw new Meteor.Error("sanitizeError", 'Not valid email address: '+value);
+		}
 	},
 	date: function(value) {
 		// if this fails it returns 'null'. That's a problem.

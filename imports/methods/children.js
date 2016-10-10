@@ -59,59 +59,45 @@ export class ChildrenMethods extends BaseMethods {
 		}
 		return result;
 	}
+
+	update(matchCriteria, newData) {
+		let result = {
+			resp: '',
+			error: '',
+		}
+
+		// Validate And Sanitize
+		if (newData.hasOwnProperty('gender')) {
+			if (Genders.indexOf(newData.gender) === -1) {
+				result.error = newData.gender+' is not an allowed gender value.';
+				return result;
+			}
+		}
+
+		let cleanData = null;
+		try {
+			cleanData = this._sanitize(newData);
+		} catch(err) {
+			result.error = err;
+			return result;
+		}
+
+		// Perform DB actions
+		try {
+			// cleanData.active = {
+			// 	'value': true,
+			// 	'timestamp': new Date(),
+			// }
+			result.resp = this._collection.update(matchCriteria, {'$set': cleanData});
+			this.__logUserActivity({
+				'id': result.resp,
+				'action': "Child updated: "+JSON.stringify(cleanData),
+			});
+
+		} catch(err) {
+			result.error = err;
+			return result;
+		}
+		return result;
+	}
 }
-
-
-// export const ChildrenMethods = {};
-//
-// ChildrenMethods._sanitizers = {
-// 	'name': ['trim'],
-// 	'birthdate': ['date'],
-// 	'gender': ['trim'],
-// };
-// ChildrenMethods._sanitize = function(data) {
-// 	let cleanData = {};
-// 	for (var d in data) cleanData[d] = sanitize(data[d], ChildrenMethods._sanitizers[d]);
-// 	return cleanData;
-// }
-//
-// ChildrenMethods.exists = function(data) {
-// 	const result = Children.find(data, {'limit':1}).count();
-// 	return result;
-// };
-//
-// ChildrenMethods.create = function(data) {
-// 	let result = {
-// 		resp: '',
-// 		error: '',
-// 	}
-//
-// 	// Validate And Sanitize
-// 	if (cleanData.hasOwnProperty('gender')) {
-// 		if (Genders.indexOf(cleanData.gender) === -1) {
-// 			result.error = cleanData.gender+' is not an allowed gender value.';
-// 			return result;
-// 		}
-// 	}
-//
-// 	try {
-// 		const cleanData = ChildrenMethods._sanitize(data);
-// 	} catch(err) {
-// 		result.error = err;
-// 		return result;
-// 	}
-//
-// 	// Perform DB actions
-// 	try {
-// 		cleanData.active = {
-// 			'value': true,
-// 			'timestamp': new Date(),
-// 		}
-// 		result.resp = Children.insert(cleanData);
-//
-// 	} catch(err) {
-// 		result.error = err;
-// 		return result;
-// 	}
-// 	return result;
-// };

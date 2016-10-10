@@ -22,6 +22,7 @@ export class BaseMethods {
 					return this._sanitize(data[s], subSchema[s]);
 
 				} else {
+					// console.log("array: "+data[s]);
 					result.push(sanitize(data[s], subSchema));
 				}
 			}
@@ -30,6 +31,7 @@ export class BaseMethods {
 			return this._sanitize(data, subSchema);
 
 		} else {
+			// console.log("string: "+data);
 			return sanitize(data, subSchema);
 		}
 	}
