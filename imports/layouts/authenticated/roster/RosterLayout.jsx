@@ -5,8 +5,7 @@ import { Link } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 // import { EditableDataRow } from './containers/EditableDataRow.jsx';
 
-import { ChildFormRow } from './containers/childFormRow.jsx';
-import { AdultFormRow } from './containers/adultFormRow.jsx';
+import { FamilyFormRows, AdultFormRow, ChildFormRow } from './containers/adultFormRow.jsx';
 
 import './RosterLayout.scss';
 
@@ -31,23 +30,9 @@ export class RosterLayout extends React.Component {
 						</div>
 						<ul className="rosterList">
 							{this.props.families.map((family, k) => {
-								return (
+								return(
 									<li key={k}>
-										<div className="children">
-											{family.children.map((child, c) => {
-												return <ChildFormRow key={c} child={child} />
-											})}
-										</div>
-										<div className="childrenForm" ref="childrenForm"></div>
-										<div className="adults">
-											{family.adults.map((adult, a) => {
-												return <AdultFormRow key={a} adult={adult} />
-											})}
-										</div>
-										<div className="adultsForm" ref="adultsForm"></div>
-										{this.props.isRoomParent ?
-											<div><a href="">Add Child</a> <a href="">Add Adult</a></div> : null
-										}
+										<FamilyFormRows family={family} />
 									</li>
 								);
 							})}

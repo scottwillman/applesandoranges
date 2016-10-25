@@ -68,12 +68,25 @@ export class UserMethods extends BaseMethods {
 			error: '',
 		};
 
+		// Since the User document stores some data in the profile and
+		// some outside, we cycle through the incoming data and move
+		// data where it needs to go based on the schema. This will prevent
+		// the view layer code from having to keep track of it.
+		let organizedData = {'profile':{}};
+		for (let d in data) {
+			if (this.schema.profile.hasOwnProperty(d)) {
+				organizedData['profile'][d] = data[d];
+			} else {
+				organizedData[d] = data[d];
+			}
+		}
+
 		// Sanitize And Flatten
 		let cleanData = null;
 		try {
-			cleanData = this._sanitize(data, this.schema);
+			cleanData = this._sanitize(organizedData, this.schema);
 			flatData  = this._flattenObject(cleanData);
-
+			// logData('Flat', flatData);
 			if (flatData.hasOwnProperty('email')) {
 				flatData['emails.0.address'] = flatData.email;
 				delete flatData['email'];

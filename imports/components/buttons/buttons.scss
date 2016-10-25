@@ -1,0 +1,73 @@
+@import "{}/imports/stylesheets/base-styles.scss";
+
+
+button {
+	display: block;
+	font-family: $font-buttons;
+	border-radius: 3px;
+}
+
+.btn {
+	font-family: $font-buttons;
+	cursor: pointer;
+	@include gradient-vertical($start-color: rgb(252,252,252), $end-color: rgb(238,238,238));
+	// width: 100%;
+	padding: .5rem .9rem;
+	margin-top: .25rem;
+	margin-bottom: .25rem;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	border-color: rgb(213,213,213);
+
+
+	span {
+		// color: #fff;
+		color: rgb(51,51,51);
+		@include text-emboss();
+	}
+
+	&:hover {
+		text-decoration: none;
+		background-color: #ddd;
+		@include gradient-vertical($start-color: #eee, $end-color: #ddd);
+		border-color: #ccc;
+	}
+
+	&:active {
+		background-color: #dcdcdc;
+		background-image: none;
+		border-color: #b5b5b5;
+		box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+	}
+
+	&:focus {
+		text-decoration: none;
+		border-color: #51a7e8;
+		outline: none;
+		box-shadow: 0 0 5px rgba(81,167,232,0.5);
+	}
+}
+
+.btn-small {
+	@extend .btn;
+	padding: .3rem .9rem;
+
+	span {
+		font-size: .9rem;
+	}
+}
+
+.btn-group button:not(:first-child):not(:last-child) {
+	border-radius: 0;
+	border-left: 0
+}
+.btn-group button:last-child {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: 0;
+}
+.btn-group button:first-child {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
